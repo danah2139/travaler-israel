@@ -1,25 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import Api from './api/api';
+import HomePage from './components/homePage/HomePage';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
+import Content from './components/content/Content';
+import CitiesList from './components/citiesList/CitiesList';
+import Rate from './components/rate/Rate';
+import Recomended from './components/recomended/Recomended';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+
+const App = () => {
+	useEffect(() => {
+		(async () => {
+			const { data } = await Api.get();
+			console.log(data.result.records);
+		})();
+	});
+	return (
+		<div className="App">
+			<BrowserRouter>
+				<div>
+					<Header />
+					<Route path="/" exact component={HomePage} />
+					<Route path="/cities" exact component={CitiesList} />
+					<Route path="/cycling/cities/:id/content" exact component={Content} />
+					<Route path="/cities/:id/walking" exact component={Content} />
+					<Route path="/cities/:id/jeep_route" exact component={Content} />
+					<Route path="/cities/:id/vehicle_route" exact component={Content} />
+					<Route path="/cities/:id/recomended" exact component={Recomended} />
+					<Footer />
+				</div>
+			</BrowserRouter>
+		</div>
+	);
+};
 
 export default App;
