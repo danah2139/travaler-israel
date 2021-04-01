@@ -22,9 +22,9 @@ const App = () => {
 	});
 	return (
 		<ThemeProvider theme={theme}>
-			<div className="App">
+			<>
 				<BrowserRouter>
-					<div>
+					<div className="App">
 						<Header />
 						<Route path="/" exact component={HomePage} />
 						<Route path="/cities" exact component={CitiesList} />
@@ -40,7 +40,7 @@ const App = () => {
 						<Footer />
 					</div>
 				</BrowserRouter>
-			</div>
+			</>
 		</ThemeProvider>
 	);
 };
