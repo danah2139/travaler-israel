@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-04-01T06:08:51.131Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="-kXRD5NqIRoDmaNGKMqm" version="14.5.4" type="github">
+<mxfile host="app.diagrams.net" modified="2021-04-01T09:31:22.623Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="HgslxB9VWImn-1x1Tuif" version="14.5.4" type="github">
   <diagram id="3SrnJBfNe3k-XUcjtAW2" name="Page-1">
-    <mxGraphModel dx="820" dy="409" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="868" dy="450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -13,7 +13,7 @@
         <mxCell id="WFVLxEAiZEshV_IO7qrC-3" value="cycling" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="510" y="120" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="WFVLxEAiZEshV_IO7qrC-4" value="Recommend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+        <mxCell id="WFVLxEAiZEshV_IO7qrC-4" value="Recommended" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
           <mxGeometry x="40" y="250" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="WFVLxEAiZEshV_IO7qrC-5" value="Footer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
@@ -38,7 +38,10 @@
           <mxGeometry x="40" y="170" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="WFVLxEAiZEshV_IO7qrC-12" value="Loading" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
-          <mxGeometry x="340" y="150" width="120" height="60" as="geometry" />
+          <mxGeometry x="350" y="130" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WFVLxEAiZEshV_IO7qrC-13" value="Home Page" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="353.5" y="210" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
