@@ -15,12 +15,12 @@ const Header = () => {
 	return (
 		<header ref={node}>
 			<FocusLock disabled={!isOpen}>
-				<div className="logo">
-					<img alt="logo" src="./img/Logo-travel-in-israel.png" />
-				</div>
 				<Burger open={isOpen} setOpen={setIsOpen} aria-controls={menuId} />
 				<NavBar open={isOpen} setOpen={setIsOpen} id={menuId} />
 			</FocusLock>
+			<div className="logo">
+				<img alt="logo" src="./img/Logo-travel-in-israel.png" />
+			</div>
 		</header>
 	);
 };
