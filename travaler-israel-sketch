@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-04-01T05:49:51.755Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="MLRdCqTpjb8Mwke7wKKk" version="14.5.4" type="github">
+<mxfile host="app.diagrams.net" modified="2021-04-01T06:08:51.131Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="-kXRD5NqIRoDmaNGKMqm" version="14.5.4" type="github">
   <diagram id="3SrnJBfNe3k-XUcjtAW2" name="Page-1">
     <mxGraphModel dx="820" dy="409" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -36,6 +36,9 @@
         </mxCell>
         <mxCell id="WFVLxEAiZEshV_IO7qrC-11" value="List of cities" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
           <mxGeometry x="40" y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WFVLxEAiZEshV_IO7qrC-12" value="Loading" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="340" y="150" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
