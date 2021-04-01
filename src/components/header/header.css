@@ -5,7 +5,15 @@ header {
 	width: 100%;
 }
 
+.logo {
+	padding: 5px;
+	border: 2px solid;
+	border-radius: 70%;
+	margin-top: 10px;
+}
+
 .logo img {
 	display: block;
 	height: 12vh;
+	border-radius: 70%;
 }
