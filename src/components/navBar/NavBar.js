@@ -13,19 +13,19 @@ const NavBar = ({ open, ...props }) => {
 				<span aria-hidden="true">🏠</span>
 				Home Page
 			</Link>
-			<Link to="/cities">
+			<Link to="/categories/cycling/regions">
 				<span aria-hidden="true">🚴‍♀️</span>
 				Cycling
 			</Link>
-			<Link to="/cities">
+			<Link to="/categories/walking/regions">
 				<span aria-hidden="true">🚶‍♀️</span>
 				Walking
 			</Link>
-			<Link to="/cities">
+			<Link to="/categories/jeep_router/regions">
 				<span aria-hidden="true">🚙</span>
 				4x4
 			</Link>
-			<Link to="/cities">
+			<Link to="/categories/vehicle_route/regions">
 				<span aria-hidden="true">🚗</span>
 				Vehicle Route
 			</Link>
