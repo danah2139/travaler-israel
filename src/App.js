@@ -4,7 +4,7 @@ import HomePage from './components/homePage/HomePage';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Content from './components/content/Content';
-import RegionsList from './components/regionsList/RegionsList';
+import List from './components/list/List';
 import Rate from './components/rate/Rate';
 import Recomended from './components/recomended/Recomended';
 import { theme } from './theme';
@@ -29,6 +29,7 @@ const App = () => {
 					offset += 100;
 					tmpRouts = [...tmpRouts, ...result];
 				} while (result.length === 100);
+				tmpRouts.map((route) => ({ ...route, rate: 0, votersCounter: 0 }));
 				setRouts(tmpRouts);
 			} catch (e) {
 				console.log(e);
@@ -46,13 +47,20 @@ const App = () => {
 						<Route
 							path="/categories/:category/regions"
 							exact
-							render={(props) => <RegionsList {...props} routs={routs} />}
+							render={(props) => (
+								<List {...props} routs={routs} type="region" />
+							)}
+						/>
+						<Route
+							path="/categories/:category/regions/:region/routs"
+							exact
+							render={(props) => <List {...props} routs={routs} type="route" />}
 						/>
 
 						<Route
-							path="/categories/:category/regions/:region/"
+							path="/categories/:category/regions/:region/routs/:route"
 							exact
-							component={Content}
+							render={(props) => <Content {...props} routs={routs} />}
 						/>
 						<Route path="/recomended" exact component={Recomended} />
 						<Footer />

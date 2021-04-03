@@ -9,23 +9,23 @@ const NavBar = ({ open, ...props }) => {
 
 	return (
 		<StyledMenu open={open} aria-hidden={!isHidden} {...props}>
-			<Link to="/">
+			<Link to="/" tabIndex={tabIndex}>
 				<span aria-hidden="true">🏠</span>
 				Home Page
 			</Link>
-			<Link to="/categories/cycling/regions">
+			<Link to="/categories/cycling/regions" tabIndex={tabIndex}>
 				<span aria-hidden="true">🚴‍♀️</span>
 				Cycling
 			</Link>
-			<Link to="/categories/walking/regions">
+			<Link to="/categories/walking/regions" tabIndex={tabIndex}>
 				<span aria-hidden="true">🚶‍♀️</span>
 				Walking
 			</Link>
-			<Link to="/categories/jeep_router/regions">
+			<Link to="/categories/4X4/regions" tabIndex={tabIndex}>
 				<span aria-hidden="true">🚙</span>
 				4x4
 			</Link>
-			<Link to="/categories/vehicle_route/regions">
+			<Link to="/categories/vehicleRoute/regions" tabIndex={tabIndex}>
 				<span aria-hidden="true">🚗</span>
 				Vehicle Route
 			</Link>
