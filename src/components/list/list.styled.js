@@ -21,7 +21,7 @@ export const StyledList = styled.div`
 		display: block;
 		border-radius: 15px;
 		margin-bottom: 1rem;
-		color: ${({ theme }) => theme.blue};
+		color: ${({ theme }) => theme.primaryHover};
 		text-decoration: none;
 		transition: color 0.3s linear;
 
@@ -31,14 +31,13 @@ export const StyledList = styled.div`
 		}
 
 		&:hover {
-			color: ${({ theme }) => theme.primaryHover};
+			color: ${({ theme }) => theme.blue};
 		}
 	}
 `;
 
 export const Wrapper = styled.div`
 	width: 100vw;
-	height: 100%;
 	text-align: center;
 	display: flex;
 	flex-direction: column;

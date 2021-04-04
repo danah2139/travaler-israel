@@ -34,7 +34,8 @@ const List = (props) => {
 					props.match.params.category
 				}/routs/${routeItem.routeName.replaceAll(' ', '')}`}
 			>
-				{routeItem.routeName}
+				<h3>Name: {routeItem.routeName}</h3>
+				<p>Duration: {routeItem.duration}</p>
 			</Link>
 		));
 	};

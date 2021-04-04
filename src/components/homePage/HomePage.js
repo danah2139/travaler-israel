@@ -10,6 +10,7 @@ const Wrapper = styled.div`
 	align-items: center;
 	justify-content: center;
 	background: url('./img/home.jpg') no-repeat center center;
+	margin-bottom: 5px;
 
 	p {
 		font-size: 1.2rem;
