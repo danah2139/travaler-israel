@@ -1,11 +1,10 @@
-import './App.css';
+import { GlobalStyles } from './global';
 import Api from './api/api';
 import HomePage from './components/homePage/HomePage';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Content from './components/content/Content';
 import List from './components/list/List';
-import Rate from './components/rate/Rate';
 import Recomended from './components/recomended/Recomended';
 import { theme } from './theme';
 
@@ -29,7 +28,12 @@ const App = () => {
 					offset += 100;
 					tmpRouts = [...tmpRouts, ...result];
 				} while (result.length === 100);
-				tmpRouts.map((route) => ({ ...route, rate: 0, votersCounter: 0 }));
+				tmpRouts = tmpRouts.map((route) => ({
+					...route,
+					Rate: 0,
+					VotersCounter: 0,
+				}));
+				console.log(tmpRouts);
 				setRouts(tmpRouts);
 			} catch (e) {
 				console.log(e);
@@ -41,30 +45,27 @@ const App = () => {
 		<ThemeProvider theme={theme}>
 			<>
 				<BrowserRouter>
-					<div className="App">
-						<Header />
-						<Route path="/" exact component={HomePage} />
-						<Route
-							path="/categories/:category/regions"
-							exact
-							render={(props) => (
-								<List {...props} routs={routs} type="region" />
-							)}
-						/>
-						<Route
-							path="/categories/:category/regions/:region/routs"
-							exact
-							render={(props) => <List {...props} routs={routs} type="route" />}
-						/>
+					<GlobalStyles />
+					<Header />
+					<Route path="/" exact component={HomePage} />
+					<Route
+						path="/categories/:category/regions"
+						exact
+						render={(props) => <List {...props} routs={routs} type="Regions" />}
+					/>
+					<Route
+						path="/categories/:category/regions/:region/routs"
+						exact
+						render={(props) => <List {...props} routs={routs} type="Routes" />}
+					/>
 
-						<Route
-							path="/categories/:category/regions/:region/routs/:route"
-							exact
-							render={(props) => <Content {...props} routs={routs} />}
-						/>
-						<Route path="/recomended" exact component={Recomended} />
-						<Footer />
-					</div>
+					<Route
+						path="/categories/:category/regions/:region/routs/:route"
+						exact
+						render={(props) => <Content {...props} routs={routs} />}
+					/>
+					<Route path="/recomended" exact component={Recomended} />
+					<Footer />
 				</BrowserRouter>
 			</>
 		</ThemeProvider>

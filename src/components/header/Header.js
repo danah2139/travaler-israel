@@ -18,6 +18,7 @@ const Header = () => {
 				<Burger open={isOpen} setOpen={setIsOpen} aria-controls={menuId} />
 				<NavBar open={isOpen} setOpen={setIsOpen} id={menuId} />
 			</FocusLock>
+			{/* <input type="search" /> */}
 			<div className="logo">
 				<img alt="logo" src="./img/Logo-travel-in-israel.png" />
 			</div>

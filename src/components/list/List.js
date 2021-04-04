@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { StyledList } from './list.styled';
+import { StyledList, Wrapper } from './list.styled';
 
 const List = (props) => {
 	const [regions, setRegions] = useState(null);
@@ -9,7 +9,7 @@ const List = (props) => {
 	useEffect(() => {
 		console.log(props);
 		if (props.routs.length) {
-			if (props.type === 'region') {
+			if (props.type === 'Regions') {
 				const result = props.routs
 					.filter((route) => {
 						if (
@@ -51,7 +51,9 @@ const List = (props) => {
 		return regions.map((regionItem) => (
 			<Link
 				key={regionItem.id}
-				to={`/categories/${props.match.params.category}/regions/${regionItem.region}`}
+				to={`/categories/${
+					props.match.params.category
+				}/regions/${regionItem.region.replace(' ', '')}/routs`}
 			>
 				{regionItem.region}
 			</Link>
@@ -64,15 +66,18 @@ const List = (props) => {
 				key={routeItem.id}
 				to={`/categories/${props.match.params.category}/regions/${props.match.params.region}/routes/${routeItem.routeName}`}
 			>
-				{routeItem.route}
+				{routeItem.routeName}
 			</Link>
 		));
 	};
 	return (
-		<div>
-			{props.type === 'region' && regions && renderRegions()}
-			{props.type === 'route' && regions && renderRoutes()}
-		</div>
+		<Wrapper>
+			<h1>{props.type}:</h1>
+			<StyledList>
+				{props.type === 'Regions' && regions && renderRegions()}
+				{props.type === 'Routes' && filterRouts && renderRoutes()}
+			</StyledList>
+		</Wrapper>
 	);
 };
 export default List;

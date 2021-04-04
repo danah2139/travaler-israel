@@ -1,15 +1,11 @@
 import styled from 'styled-components';
 
-export const StyledList = styled.nav`
+export const StyledList = styled.div`
 	display: flex;
-	justify-content: center;
-	background: ${({ theme }) => theme.primaryLight};
-	height: 100vh;
-	text-align: left;
+	justify-content: space-between;
+	${'' /* align-items: center; */}
 	padding: 2rem;
-	position: absolute;
-	top: 0;
-	left: 0;
+	flex-wrap: wrap;
 
 	@media (max-width: ${({ theme }) => theme.mobile}) {
 		width: 100%;
@@ -18,9 +14,14 @@ export const StyledList = styled.nav`
 	a {
 		font-size: 1rem;
 		text-transform: uppercase;
-		padding: 2rem 0;
+		padding: 0.5rem 2rem;
 		font-weight: bold;
-		color: ${({ theme }) => theme.primaryDark};
+		text-align: center;
+		border: 2px solid;
+		display: block;
+		border-radius: 15px;
+		margin-bottom: 1rem;
+		color: ${({ theme }) => theme.blue};
 		text-decoration: none;
 		transition: color 0.3s linear;
 
@@ -33,4 +34,12 @@ export const StyledList = styled.nav`
 			color: ${({ theme }) => theme.primaryHover};
 		}
 	}
+`;
+
+export const Wrapper = styled.div`
+	width: 100vw;
+	height: 100%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
 `;
