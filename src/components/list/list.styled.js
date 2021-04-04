@@ -12,7 +12,7 @@ export const StyledList = styled.div`
 	}
 
 	a {
-		font-size: 1rem;
+		font-size: 0.7rem;
 		text-transform: uppercase;
 		padding: 0.5rem 2rem;
 		font-weight: bold;

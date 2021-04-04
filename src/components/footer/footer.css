@@ -3,4 +3,7 @@ footer {
 	height: 14%;
 	width: 100%;
 	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
