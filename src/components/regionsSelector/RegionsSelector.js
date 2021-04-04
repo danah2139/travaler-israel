@@ -52,6 +52,7 @@ const RegionsSelector = (props) => {
 		<Wrapper>
 			<h1>Choose Region:</h1>
 			<select onChange={(event) => handleChange(event.target.value)}>
+				<option>Select Region</option>
 				{regions && renderRegions()}
 			</select>
 		</Wrapper>

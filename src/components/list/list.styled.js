@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const StyledList = styled.div`
 	display: flex;
-	justify-content: space-between;
+	${'' /* justify-content: space-between; */}
+	flex-direction:column;
 	${'' /* align-items: center; */}
 	padding: 2rem;
 	flex-wrap: wrap;
@@ -16,9 +17,12 @@ export const StyledList = styled.div`
 		text-transform: uppercase;
 		padding: 0.5rem 2rem;
 		font-weight: bold;
-		text-align: center;
+		text-align: left;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 		border: 2px solid;
-		display: block;
+		${'' /* display: block; */}
 		border-radius: 15px;
 		margin-bottom: 1rem;
 		color: ${({ theme }) => theme.primaryHover};
@@ -33,6 +37,10 @@ export const StyledList = styled.div`
 		&:hover {
 			color: ${({ theme }) => theme.blue};
 		}
+		h3,
+		p {
+			text-align: left;
+		}
 	}
 `;
 
@@ -41,4 +49,7 @@ export const Wrapper = styled.div`
 	text-align: center;
 	display: flex;
 	flex-direction: column;
+	h2 {
+		color: ${({ theme }) => theme.primaryHover};
+	}
 `;

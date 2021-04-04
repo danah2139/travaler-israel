@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarked } from '@fortawesome/free-solid-svg-icons';
+
 import { StyledList, Wrapper } from './list.styled';
 
 const List = (props) => {
@@ -30,18 +33,21 @@ const List = (props) => {
 		return filterRouts.map((routeItem) => (
 			<Link
 				key={routeItem.id}
-				to={`/categories/${
-					props.match.params.category
+				to={`/categories/${props.match.params.category}/regions/${
+					props.match.params.region
 				}/routs/${routeItem.routeName.replaceAll(' ', '')}`}
 			>
-				<h3>Name: {routeItem.routeName}</h3>
-				<p>Duration: {routeItem.duration}</p>
+				<div>
+					<h3>Name: {routeItem.routeName}</h3>
+					<p>Duration: {routeItem.duration}</p>
+				</div>
+				<FontAwesomeIcon icon={faMapMarked} size="3x" />
 			</Link>
 		));
 	};
 	return (
 		<Wrapper>
-			<h2>Routs:</h2>
+			<h2>Routes:</h2>
 			<StyledList>{filterRouts && renderRoutes()}</StyledList>
 		</Wrapper>
 	);
