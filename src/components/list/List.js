@@ -5,17 +5,16 @@ import { faMapMarked } from '@fortawesome/free-solid-svg-icons';
 
 import { StyledList, Wrapper } from './list.styled';
 
-const List = (props) => {
+const List = ({ routs, region, category }) => {
 	const [filterRouts, setFilterRouts] = useState(null);
 
 	useEffect(() => {
-		console.log(props);
-		if (props.routs.length) {
-			const result = props.routs
+		if (routs.length) {
+			const result = routs
 				.filter((route) =>
 					route.Region.toLowerCase()
 						.replaceAll(' ', '')
-						.includes(props.match.params.region.toLowerCase())
+						.includes(region.toLowerCase())
 				)
 				.map((route) => ({
 					routeName: route.Name,
@@ -25,7 +24,7 @@ const List = (props) => {
 
 			setFilterRouts(result);
 		}
-	}, [props.match.params.region]);
+	}, [region]);
 
 	// 			.map((route) => ({ routeName: route.Name, id: route.Id })); setFilterRouts(result);
 
@@ -33,9 +32,10 @@ const List = (props) => {
 		return filterRouts.map((routeItem) => (
 			<Link
 				key={routeItem.id}
-				to={`/categories/${props.match.params.category}/regions/${
-					props.match.params.region
-				}/routs/${routeItem.routeName.replaceAll(' ', '')}`}
+				to={`/categories/${category}/routs/${routeItem.routeName.replaceAll(
+					' ',
+					''
+				)}`}
 			>
 				<div>
 					<h3>Name: {routeItem.routeName}</h3>
@@ -45,11 +45,6 @@ const List = (props) => {
 			</Link>
 		));
 	};
-	return (
-		<Wrapper>
-			<h2>Routes:</h2>
-			<StyledList>{filterRouts && renderRoutes()}</StyledList>
-		</Wrapper>
-	);
+	return <StyledList>{filterRouts && renderRoutes()}</StyledList>;
 };
 export default List;

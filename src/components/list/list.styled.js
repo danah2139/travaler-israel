@@ -2,11 +2,13 @@ import styled from 'styled-components';
 
 export const StyledList = styled.div`
 	display: flex;
+	width: 90%;
 	${'' /* justify-content: space-between; */}
 	flex-direction:column;
 	${'' /* align-items: center; */}
-	padding: 2rem;
-	flex-wrap: wrap;
+	padding: 1rem;
+	${'' /* flex-wrap: wrap; */}
+	overflow: scroll;
 
 	@media (max-width: ${({ theme }) => theme.mobile}) {
 		width: 100%;

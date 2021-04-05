@@ -14,7 +14,7 @@ export const GlobalStyles = createGlobalStyle`
     display: flex;
 
     background: ${({ theme }) => theme.primaryWhite};
-    color: ${({ theme }) => theme.blue};
+    color: ${({ theme }) => theme.primaryDark};
     height: 100vh;
     text-rendering: optimizeLegibility;
 	font-family: 'Montserrat', sans-serif;

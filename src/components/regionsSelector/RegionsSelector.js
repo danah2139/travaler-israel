@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { Wrapper } from './selector.styled';
+
+import List from '../list/List';
 
 const RegionsSelector = (props) => {
 	const [regions, setRegions] = useState(null);
-	//const [selectedRegion, setSelectedRegion] = useState('');
-	let history = useHistory();
-
-	//const [filterRouts, setFilterRouts] = useState(null);
+	const [selectedRegion, setSelectedRegion] = useState('');
+	// let history = useHistory();
+	let { category } = useParams();
 
 	useEffect(() => {
 		// console.log(props);
@@ -17,7 +18,7 @@ const RegionsSelector = (props) => {
 					(route) =>
 						route.Trail_Type.toLowerCase()
 							.replaceAll(' ', '')
-							.includes(props.match.params.category.toLowerCase()) &&
+							.includes(category.toLowerCase()) &&
 						route.Region.search(/[^a-z|A-Z| ]/) === -1 &&
 						route.Region
 				)
@@ -30,17 +31,14 @@ const RegionsSelector = (props) => {
 				)
 			);
 		}
-	}, [props.match.params.category]);
-
-	// 			.map((route) => ({ routeName: route.Name, id: route.Id })); setFilterRouts(result);
+	}, [category]);
 
 	const handleChange = (value) => {
-		history.push(
-			`/categories/${props.match.params.category}/regions/${value.replaceAll(
-				' ',
-				''
-			)}/routs`
-		);
+		// history.push(
+		// 	`/categories/${category}/regions/${value.replaceAll(' ', '')}/routs`
+		// );
+
+		setSelectedRegion(value.replaceAll(' ', ''));
 	};
 
 	const renderRegions = () => {
@@ -55,6 +53,9 @@ const RegionsSelector = (props) => {
 				<option>Select Region</option>
 				{regions && renderRegions()}
 			</select>
+			{selectedRegion && (
+				<List region={selectedRegion} routs={props.routs} category={category} />
+			)}
 		</Wrapper>
 	);
 };

@@ -8,15 +8,21 @@ const StarsContainer = styled.div`
 	justify-content: center;
 `;
 
-const Rate = () => {
+const Star = styled.span`
+	path {
+		fill: ${({ selected }) => (selected ? 'orange' : 'gray')};
+	}
+`;
+
+const Rate = ({ onClick, starsSelected }) => {
 	const renderStars = () => {
 		const stars = [];
 
 		for (let i = 0; i < 5; i++) {
 			stars.push(
-				<div className="star" key={i}>
+				<Star key={i} selected={i < starsSelected} onClick={onClick}>
 					<FontAwesomeIcon icon={faStar} size="2x" />
-				</div>
+				</Star>
 			);
 		}
 		return stars;

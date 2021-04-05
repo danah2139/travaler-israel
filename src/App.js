@@ -10,11 +10,17 @@ import { theme } from './theme';
 
 import { ThemeProvider } from 'styled-components';
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import RegionsSelector from './components/regionsSelector/RegionsSelector';
 
 const App = () => {
 	const [routs, setRouts] = useState([]);
+	const [starsSelected, selectStar] = useState(0);
+
+	const handleStarSelected = () => {
+		selectStar(starsSelected + 1);
+	};
+
 	useEffect(() => {
 		(async () => {
 			try {
@@ -47,26 +53,27 @@ const App = () => {
 				<BrowserRouter>
 					<GlobalStyles />
 					<Header />
-					<Route path="/" exact component={HomePage} />
-					<Route
-						path="/categories/:category/regions/:region/routs"
-						exact
-						render={(props) => <List {...props} routs={routs} />}
-					/>
-					<Route
-						path="/categories/:category/regions"
-						exact
-						render={(props) => <RegionsSelector {...props} routs={routs} />}
-					/>
-					{/* v5 routing ->  */}
-					<Route
-						exact
-						path="/categories/:category/regions/:region/routs/:route"
-					>
-						<Content routs={routs} />
-					</Route>
+					<Switch>
+						<Route path="/" exact component={HomePage} />
+						{/* <Route
+							path="/categories/:category/regions/:region/routs"
+							exact
+							render={(props) => <List {...props} routs={routs} />}
+						/> */}
 
-					<Route path="/recomended" exact component={Recomended} />
+						<Route path="/categories/:category/routs" exact>
+							<RegionsSelector routs={routs} />
+						</Route>
+						{/* v5 routing ->  */}
+						<Route exact path="/categories/:category/routs/:route">
+							<Content
+								onClick={handleStarSelected}
+								starsSelected={starsSelected}
+								routs={routs}
+							/>
+						</Route>
+						<Route path="/recomended" exact component={Recomended} />
+					</Switch>
 					<Footer />
 				</BrowserRouter>
 			</>
