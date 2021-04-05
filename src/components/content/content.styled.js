@@ -14,6 +14,9 @@ export const Wrapper = styled.div`
 		margin: 10px;
 		padding: 5px;
 	}
+	.content {
+		margin-bottom: 20px;
+	}
 
 	.rate {
 		height: 10rem;
