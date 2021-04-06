@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
 	display: flex;
 	height: 70%;
+	justify-content: center;
 
 	span {
 		font-weight: 700;
@@ -18,6 +19,7 @@ export const Wrapper = styled.div`
 
 	.content-container {
 		height: 98%;
+		width: 80%;
 	}
 
 	.content,
@@ -29,7 +31,6 @@ export const Wrapper = styled.div`
 		padding: 5px;
 	}
 	.content-container {
-		margin-bottom: 20px;
 	}
 
 	.rate {

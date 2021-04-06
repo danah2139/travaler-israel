@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-between;
-		height: 30em;
+		height: 100%;
 		padding: 5px;
 		${'' /* background-color: rgba(250, 250, 250, 0.9); */}
 		width: 45em;
@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
 	}
 
 	select,
-	input[type='text'] {
+	input[type='number'] {
 		width: 200px;
 		height: 30px;
 	}
@@ -44,6 +44,8 @@ export const Wrapper = styled.div`
 		border-radius: 3px;
 		${'' /* color: palevioletred; */}
 		font-size: 1em;
+		cursor: pointer;
+
 		${'' /* width: 50px; */}
 	}
 `;

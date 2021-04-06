@@ -4,7 +4,7 @@ import { API_KEY } from './API_KEY';
 
 const MapContainer = ({ routeName, location }) => {
 	const mapStyles = {
-		height: '250px',
+		height: '200px',
 		width: '100%',
 	};
 

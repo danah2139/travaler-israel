@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Wrapper } from './recomended.styled';
-import { useHistory } from 'react-dom';
+import { useHistory } from 'react-router-dom';
 
 const Recomended = ({ routs }) => {
 	const [formInfo, setFormInfo] = useState({});
+	let history = useHistory();
 	useEffect(() => {
 		navigator.geolocation.getCurrentPosition(
 			(position) => {
@@ -42,13 +43,24 @@ const Recomended = ({ routs }) => {
 		const result = routs.filter((route) => {
 			flag = true;
 			for (let key in formInfo) {
+				if (key === 'Trail_Duration') {
+					if (!route[key].includes(formInfo[key])) {
+						flag = false;
+					}
+				}
 				if (
 					key === 'Parking' ||
 					key === 'Suitable_for_Children' ||
 					key === 'Suitable_for_Picnics'
 				) {
+					if (
+						(formInfo[key] && route[key] !== 'Yes') ||
+						(!formInfo[key] && route[key] !== 'No')
+					) {
+						console.log(formInfo[key], route[key]);
+						flag = false;
+					}
 				} else if (route[key] !== formInfo[key]) {
-					console.log(flag);
 					flag = false;
 				}
 			}
@@ -57,13 +69,27 @@ const Recomended = ({ routs }) => {
 			}
 		});
 		console.log(result);
+		if (result.length) {
+			history.push(
+				`/categories/${result[0].Trail_Type}/routs/${result[0].Name.replaceAll(
+					' ',
+					''
+				)}`
+			);
+		}
+
+		event.target.reset();
 	};
 	return (
 		<Wrapper>
 			<form onSubmit={handleSearch}>
 				<label className="title">
 					Insert Duration of Your trip:{' '}
-					<input type="text" name="Duration" onChange={handleInputChange} />
+					<input
+						type="number"
+						name="Trail_Duration"
+						onChange={handleInputChange}
+					/>
 				</label>
 				<label className="title">
 					Choose Region:{' '}
@@ -138,7 +164,7 @@ const Recomended = ({ routs }) => {
 						onChange={handleInputChange}
 					/>
 				</label>
-				<input type="submit" value="Search" />
+				<input type="submit" value="search" />
 			</form>
 		</Wrapper>
 	);
