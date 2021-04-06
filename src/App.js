@@ -26,7 +26,7 @@ const App = () => {
 				//console.log(starsSelected);
 				return {
 					...route,
-					Voters_Counter: route.VotersCounter + 1,
+					Voters_Counter: route.Voters_Counter + 1,
 					Rate: i + route.Rate,
 				};
 			} else {
