@@ -17,9 +17,8 @@ const Star = styled.span`
 const Rate = ({ handleStarSelected, routeSelected }) => {
 	const [starsSelected, setStarsSelected] = useState(0);
 	const handleClick = (i) => {
-		console.log('test', routeSelected);
 		setStarsSelected(i + 1);
-		handleStarSelected(routeSelected, i);
+		handleStarSelected(routeSelected, starsSelected);
 	};
 
 	const renderStars = () => {

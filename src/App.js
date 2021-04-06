@@ -15,21 +15,19 @@ import RegionsSelector from './components/regionsSelector/RegionsSelector';
 
 const App = () => {
 	const [routs, setRouts] = useState([]);
-	const [starsSelected, setSelectStar] = useState(0);
+	//const [starsSelected, setSelectStar] = useState(0);
 	//const [routeSelected, setRouteSelected] = useState('');
 
 	const handleStarSelected = (routeName, i) => {
-		console.log(routeName);
-		console.log(routs);
-		setSelectStar(i + 1);
+		//setSelectStar(i);
 		//console.log(starsSelected);
 		const result = routs.map((route) => {
 			if (route.Name.replaceAll(' ', '') === routeName) {
-				console.log(starsSelected);
+				//console.log(starsSelected);
 				return {
 					...route,
-					VotersCounter: route.VotersCounter + 1,
-					Rate: starsSelected / route.VotersCounter,
+					Voters_Counter: route.VotersCounter + 1,
+					Rate: i + route.Rate,
 				};
 			} else {
 				return route;
@@ -55,7 +53,7 @@ const App = () => {
 				tmpRouts = tmpRouts.map((route) => ({
 					...route,
 					Rate: 0,
-					VotersCounter: 0,
+					Voters_Counter: 0,
 				}));
 				setRouts(tmpRouts);
 			} catch (e) {

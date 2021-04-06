@@ -49,6 +49,14 @@ const Content = ({ routs, handleStarSelected }) => {
 						</div>
 					);
 				}
+			} else if (key === 'Rate') {
+				let avaregeRate = routeInfo[key] / routeInfo['Voters_Counter'];
+				tempInfo.push(
+					<div>
+						<span>{`${key}: `}</span>
+						<p> {avaregeRate}</p>
+					</div>
+				);
 			}
 		}
 		return tempInfo;

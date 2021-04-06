@@ -12,25 +12,42 @@ const Recomended = (props) => {
 			}
 		);
 	}, []);
+
+	const handleSearch = (event) => {
+		event.preventDefault();
+	};
 	console.log('hi', props);
 	return (
 		<Wrapper>
-			<form>
+			<form onSubmit={handleSearch}>
 				<label>
-					Insert Duration of Your trip: <input type="text" />
+					Insert Duration of Your trip:{' '}
+					<input type="text" name="" onChange="" value="" />
 				</label>
 				<label>
-					Insert Region: <input type="text" />
+					Choose Region:{' '}
+					<select>
+						<option>Select Region</option>
+					</select>
 				</label>
+				<div>
+					<label>
+						<input
+							type="radio"
+							value="Cycling"
+							//checked={state.selectedOption === 'Male'}
+							///onChange={onValueChange}
+						/>
+						Cycling
+					</label>
+				</div>
 				<label>
 					Trail Type:
-					<input type="radio" />
-					Cycling
-					<input type="radio" />
+					<input type="radio" name="type" value="Walking" />
 					Walking
-					<input type="radio" />
+					<input type="radio" value="4x4" name="type" />
 					4x4
-					<input type="radio" />
+					<input type="radio" value="VehicleRoute" name="type" />
 					Vehicle Route
 				</label>
 				<label>
