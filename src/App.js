@@ -39,28 +39,37 @@ const App = () => {
 	useEffect(() => {
 		(async () => {
 			try {
+				const dataFromLocalStorage = JSON.parse(localStorage.getItem('routs'));
 				let offset = 0;
 				let result = [];
 				let tmpRouts = [];
-				do {
-					const { data } = await Api.get(
-						`datastore_search?resource_id=8fb94fe2-a87c-46b6-9c0b-c2abe4fbf06f&limit=100&offset=${offset}`
-					);
-					result = data.result.records;
-					offset += 100;
-					tmpRouts = [...tmpRouts, ...result];
-				} while (result.length === 100);
-				tmpRouts = tmpRouts.map((route) => ({
-					...route,
-					Rate: 0,
-					Voters_Counter: 0,
-				}));
-				setRouts(tmpRouts);
+				if (!dataFromLocalStorage) {
+					do {
+						const { data } = await Api.get(
+							`datastore_search?resource_id=8fb94fe2-a87c-46b6-9c0b-c2abe4fbf06f&limit=100&offset=${offset}`
+						);
+						result = data.result.records;
+						offset += 100;
+						tmpRouts = [...tmpRouts, ...result];
+					} while (result.length === 100);
+					tmpRouts = tmpRouts.map((route) => ({
+						...route,
+						Rate: 0,
+						Voters_Counter: 0,
+					}));
+					//localStorage.setItem('routs', JSON.stringify(tmpRouts));
+					setRouts(tmpRouts);
+				} else {
+					setRouts(dataFromLocalStorage);
+				}
 			} catch (e) {
 				console.log(e);
 			}
 		})();
 	}, []);
+	useEffect(() => {
+		localStorage.setItem('routs', JSON.stringify(routs));
+	}, [routs]);
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -70,12 +79,6 @@ const App = () => {
 					<Header />
 					<Switch>
 						<Route path="/" exact component={HomePage} />
-						{/* <Route
-							path="/categories/:category/regions/:region/routs"
-							exact
-							render={(props) => <List {...props} routs={routs} />}
-						/> */}
-
 						<Route path="/categories/:category/routs" exact>
 							<RegionsSelector routs={routs} />
 						</Route>
@@ -83,7 +86,9 @@ const App = () => {
 						<Route exact path="/categories/:category/routs/:route">
 							<Content handleStarSelected={handleStarSelected} routs={routs} />
 						</Route>
-						<Route path="/recomended" exact component={Recomended} />
+						<Route path="/recomended" exact>
+							<Recomended routs={routs} />
+						</Route>
 					</Switch>
 					<Footer />
 				</BrowserRouter>
