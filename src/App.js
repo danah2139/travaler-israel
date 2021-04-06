@@ -23,7 +23,7 @@ const App = () => {
 		//console.log(starsSelected);
 		const result = routs.map((route) => {
 			if (route.Name.replaceAll(' ', '') === routeName) {
-				//console.log(starsSelected);
+				console.log(i, 'test');
 				return {
 					...route,
 					Voters_Counter: route.Voters_Counter + 1,
