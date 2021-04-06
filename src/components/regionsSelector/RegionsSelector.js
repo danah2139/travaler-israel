@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Wrapper } from './selector.styled';
 
 import List from '../list/List';
@@ -11,8 +11,8 @@ const RegionsSelector = (props) => {
 	let { category } = useParams();
 
 	useEffect(() => {
-		// console.log(props);
-		if (props.routs.length) {
+		if (props.routs[0] !== 'undefined') {
+			console.log(props.routs);
 			const result = props.routs
 				.filter(
 					(route) =>
@@ -43,7 +43,9 @@ const RegionsSelector = (props) => {
 
 	const renderRegions = () => {
 		return regions.map((regionItem) => (
-			<option value={regionItem.region}>{regionItem.region}</option>
+			<option key={regionItem.id} value={regionItem.region}>
+				{regionItem.region}
+			</option>
 		));
 	};
 	return (

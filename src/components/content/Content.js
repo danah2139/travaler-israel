@@ -2,9 +2,15 @@ import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 import Rate from '../rate/Rate';
 import { Wrapper } from './content.styled';
-const Content = ({ routs, onClick, starsSelected }) => {
+import MapContainer from '../mapContainer/MapContainer';
+
+const Content = ({ routs, handleStarSelected }) => {
 	const { route, category, region } = useParams();
-	const [routeInfo, setRouteInfo] = useState(null);
+	const [routeInfo, setRouteInfo] = useState({ Name: null });
+	const [location, setLocation] = useState({
+		lat: 31.948995001443276,
+		lng: 33.622852171540295,
+	});
 	useEffect(() => {
 		if (routs.length) {
 			setRouteInfo(
@@ -14,8 +20,15 @@ const Content = ({ routs, onClick, starsSelected }) => {
 						route.toLowerCase()
 				)
 			);
+			//console.log(routeName, 'check');
 		}
 	}, [route]);
+
+	// useEffect(() => {
+	// 	if (routeInfo) {
+	// 		console.log(routeInfo.Name, 'hi');
+	// 	}
+	// }, [route]);
 	const renderRoute = () => {
 		const tempInfo = [];
 		for (let key in routeInfo) {
@@ -29,9 +42,6 @@ const Content = ({ routs, onClick, starsSelected }) => {
 				key !== 'ShortDescription'
 			) {
 				if (routeInfo[key] !== '') {
-					// if (typeof key === 'string') {
-					// 	key = ;
-					// }
 					tempInfo.push(
 						<div>
 							<span>{`${key.replaceAll('_', ' ')}: `}</span>
@@ -46,13 +56,12 @@ const Content = ({ routs, onClick, starsSelected }) => {
 
 	return (
 		<Wrapper>
-			<div className="content">{routeInfo && renderRoute()}</div>
+			<div className="content-container">
+				<div className="content">{routeInfo && renderRoute()}</div>
+				{/* <MapContainer routeName={routeName} location={location} /> */}
+			</div>
 			<div className="rate">
-				<h3>Rate the Route:</h3>
-				<Rate onClick={onClick} starsSelected={starsSelected} />
-				<p>
-					<span>{starsSelected}</span> of 5 stars
-				</p>
+				<Rate handleStarSelected={handleStarSelected} routeSelected={route} />
 			</div>
 		</Wrapper>
 	);

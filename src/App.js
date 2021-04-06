@@ -15,10 +15,27 @@ import RegionsSelector from './components/regionsSelector/RegionsSelector';
 
 const App = () => {
 	const [routs, setRouts] = useState([]);
-	const [starsSelected, selectStar] = useState(0);
+	const [starsSelected, setSelectStar] = useState(0);
+	//const [routeSelected, setRouteSelected] = useState('');
 
-	const handleStarSelected = () => {
-		selectStar(starsSelected + 1);
+	const handleStarSelected = (routeName, i) => {
+		console.log(routeName);
+		console.log(routs);
+		setSelectStar(i + 1);
+		//console.log(starsSelected);
+		const result = routs.map((route) => {
+			if (route.Name.replaceAll(' ', '') === routeName) {
+				console.log(starsSelected);
+				return {
+					...route,
+					VotersCounter: route.VotersCounter + 1,
+					Rate: starsSelected / route.VotersCounter,
+				};
+			} else {
+				return route;
+			}
+		});
+		setRouts(result);
 	};
 
 	useEffect(() => {
@@ -66,11 +83,7 @@ const App = () => {
 						</Route>
 						{/* v5 routing ->  */}
 						<Route exact path="/categories/:category/routs/:route">
-							<Content
-								onClick={handleStarSelected}
-								starsSelected={starsSelected}
-								routs={routs}
-							/>
+							<Content handleStarSelected={handleStarSelected} routs={routs} />
 						</Route>
 						<Route path="/recomended" exact component={Recomended} />
 					</Switch>

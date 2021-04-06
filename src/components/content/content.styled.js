@@ -7,14 +7,18 @@ export const Wrapper = styled.div`
 		font-weight: 700;
 	}
 
-	.content,
+	.content {
+		height: 80%;
+	}
+
+	.content-container,
 	.rate {
 		background: white;
 		border-radius: 15px;
 		margin: 10px;
 		padding: 5px;
 	}
-	.content {
+	.content-container {
 		margin-bottom: 20px;
 	}
 

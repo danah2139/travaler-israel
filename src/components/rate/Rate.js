@@ -14,19 +14,38 @@ const Star = styled.span`
 	}
 `;
 
-const Rate = ({ onClick, starsSelected }) => {
+const Rate = ({ handleStarSelected, routeSelected }) => {
+	const [starsSelected, setStarsSelected] = useState(0);
+	const handleClick = (i) => {
+		console.log('test', routeSelected);
+		setStarsSelected(i + 1);
+		handleStarSelected(routeSelected, i);
+	};
+
 	const renderStars = () => {
 		const stars = [];
 
 		for (let i = 0; i < 5; i++) {
 			stars.push(
-				<Star key={i} selected={i < starsSelected} onClick={onClick}>
+				<Star
+					key={i}
+					selected={i < starsSelected}
+					onClick={() => handleClick(i)}
+				>
 					<FontAwesomeIcon icon={faStar} size="2x" />
 				</Star>
 			);
 		}
 		return stars;
 	};
-	return <StarsContainer>{renderStars()}</StarsContainer>;
+	return (
+		<div>
+			<h3>Rate the Route:</h3>
+			<StarsContainer>{renderStars()}</StarsContainer>{' '}
+			<p>
+				<span>{starsSelected}</span> of 5 stars
+			</p>
+		</div>
+	);
 };
 export default Rate;
