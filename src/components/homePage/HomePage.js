@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-	width: 100vw;
+	${'' /* width: 100vw; */}
 	height: 70%;
 	text-align: center;
 	display: flex;
@@ -10,6 +10,7 @@ const Wrapper = styled.div`
 	align-items: center;
 	justify-content: center;
 	background: url('./img/home.jpg') no-repeat center center;
+	background-size: auto;
 	margin-bottom: 5px;
 
 	p {

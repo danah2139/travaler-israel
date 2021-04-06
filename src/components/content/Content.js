@@ -47,7 +47,9 @@ const Content = ({ routs, handleStarSelected }) => {
 				key !== 'Id' &&
 				key !== 'VendorId' &&
 				key !== 'Vendor_Name' &&
-				key !== 'ShortDescription'
+				key !== 'ShortDescription' &&
+				key !== 'URL' &&
+				key !== 'Product_Url'
 			) {
 				if (routeInfo[key] !== '') {
 					tempInfo.push(
@@ -66,7 +68,7 @@ const Content = ({ routs, handleStarSelected }) => {
 		<Wrapper>
 			<div className="content-container">
 				<div className="content">{routeInfo && renderRoute()}</div>
-				{/* <MapContainer routeName={routeName} location={location} /> */}
+				<MapContainer routeName={route} location={location} />
 			</div>
 			<div className="rate">
 				<Rate handleStarSelected={handleStarSelected} routeSelected={route} />

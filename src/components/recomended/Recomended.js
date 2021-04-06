@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Wrapper } from './recomended.styled';
+import { useHistory } from 'react-dom';
 
 const Recomended = ({ routs }) => {
 	const [formInfo, setFormInfo] = useState({});
@@ -36,22 +37,42 @@ const Recomended = ({ routs }) => {
 	const handleSearch = (event) => {
 		event.preventDefault();
 		console.log(formInfo);
+		let flag = true;
+
+		const result = routs.filter((route) => {
+			flag = true;
+			for (let key in formInfo) {
+				if (
+					key === 'Parking' ||
+					key === 'Suitable_for_Children' ||
+					key === 'Suitable_for_Picnics'
+				) {
+				} else if (route[key] !== formInfo[key]) {
+					console.log(flag);
+					flag = false;
+				}
+			}
+			if (flag) {
+				return route;
+			}
+		});
+		console.log(result);
 	};
 	return (
 		<Wrapper>
 			<form onSubmit={handleSearch}>
-				<label>
+				<label className="title">
 					Insert Duration of Your trip:{' '}
 					<input type="text" name="Duration" onChange={handleInputChange} />
 				</label>
-				<label>
+				<label className="title">
 					Choose Region:{' '}
 					<select name="Region" onChange={handleInputChange}>
 						<option>Select Region</option>
 						{renderRegions()}
 					</select>
 				</label>
-				<label>Trail Type:</label>
+				<label className="title">Trail Type:</label>
 				<div>
 					<label>
 						<input
@@ -97,29 +118,26 @@ const Recomended = ({ routs }) => {
 						Vehicle Route
 					</label>
 				</div>
-				<label>Parking:</label>
-				<div>
-					<label>
-						<input
-							type="radio"
-							name="Parking"
-							value="Yes"
-							onChange={handleInputChange}
-						/>
-						Yes
-					</label>
-				</div>
-				<div>
-					<label>
-						<input
-							type="radio"
-							name="Parking"
-							value="No"
-							onChange={handleInputChange}
-						/>
-						No
-					</label>
-				</div>
+				<label className="title">
+					Parking:
+					<input type="checkbox" name="Parking" onChange={handleInputChange} />
+				</label>
+				<label className="title">
+					Suitable for Children:
+					<input
+						type="checkbox"
+						name="Suitable_for_Children"
+						onChange={handleInputChange}
+					/>
+				</label>
+				<label className="title">
+					Suitable for Picnics:
+					<input
+						type="checkbox"
+						name="Suitable_for_Picnics"
+						onChange={handleInputChange}
+					/>
+				</label>
 				<input type="submit" value="Search" />
 			</form>
 		</Wrapper>

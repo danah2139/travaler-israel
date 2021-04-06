@@ -17,6 +17,7 @@ export const StyledList = styled.div`
 	a {
 		font-size: 0.7rem;
 		text-transform: uppercase;
+		background-color: rgba(250, 250, 250, 0.6);
 		padding: 0.5rem 2rem;
 		font-weight: bold;
 		text-align: left;
