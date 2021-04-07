@@ -50,11 +50,14 @@ const RegionsSelector = (props) => {
 	};
 	return (
 		<Wrapper>
-			<h1>Choose Region:</h1>
-			<select onChange={(event) => handleChange(event.target.value)}>
-				<option>Select Region</option>
-				{regions && renderRegions()}
-			</select>
+			<div className="selector">
+				<h1>Choose Region:</h1>
+				<select onChange={(event) => handleChange(event.target.value)}>
+					<option>Select Region</option>
+					{regions && renderRegions()}
+				</select>
+			</div>
+
 			{selectedRegion && (
 				<List region={selectedRegion} routs={props.routs} category={category} />
 			)}

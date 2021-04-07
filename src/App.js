@@ -10,18 +10,20 @@ import { theme } from './theme';
 
 import { ThemeProvider } from 'styled-components';
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom';
 import RegionsSelector from './components/regionsSelector/RegionsSelector';
 import SearchList from './components/searchList/SearchList';
 
 const App = () => {
 	const [routs, setRouts] = useState([]);
+	let history = useHistory();
 	//const [starsSelected, setSelectStar] = useState(0);
 	//const [routeSelected, setRouteSelected] = useState('');
 	const [searchTerm, setSerchTerm] = useState('');
 
 	const handleChange = (event) => {
 		setSerchTerm(event.target.value);
+		history.push('/searchList');
 	};
 	const handleStarSelected = (routeName, i) => {
 		//setSelectStar(i);
@@ -95,7 +97,7 @@ const App = () => {
 						<Route path="/recomended" exact>
 							<Recomended routs={routs} />
 						</Route>
-						<Route path="/SearchList" exact>
+						<Route path="/searchList" exact>
 							<SearchList routs={routs} searchTerm={searchTerm} />
 						</Route>
 					</Switch>

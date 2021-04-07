@@ -7,6 +7,9 @@ export const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	.selector {
+		height: 30%;
+	}
 
 	select {
 		width: 200px;

@@ -19,13 +19,13 @@ header {
 .wrapper {
 	position: relative;
 	display: flex;
-	min-width: 100px;
+	min-width: 200px;
 }
 
 .search {
 	border: 1px solid grey;
 	border-radius: 5px;
-	height: 25px;
+	height: 40px;
 	width: 100%;
 	padding: 2px 23px 2px 30px;
 	outline: 0;
@@ -34,8 +34,8 @@ header {
 
 .search-icon {
 	position: absolute;
-	top: 8px;
-	left: 8px;
+	top: 13px;
+	left: 13px;
 	width: 14px;
 }
 
