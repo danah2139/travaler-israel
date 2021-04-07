@@ -7,10 +7,7 @@ import MapContainer from '../mapContainer/MapContainer';
 const Content = ({ routs, handleStarSelected }) => {
 	const { route, category, region } = useParams();
 	const [routeInfo, setRouteInfo] = useState({ Name: null });
-	const [location, setLocation] = useState({
-		lat: 31.6685542,
-		lng: 34.5639033,
-	});
+	const [location, setLocation] = useState({});
 	useEffect(() => {
 		if (routs.length) {
 			setRouteInfo(
@@ -20,15 +17,17 @@ const Content = ({ routs, handleStarSelected }) => {
 						route.toLowerCase()
 				)
 			);
-			// console.log(routeInfo);
+			console.log('banana', routeInfo);
+
+			console.log('banana', routeInfo['Ending_point_-_X']);
 			const temp = {
 				lng: Number(routeInfo['Ending_point_-_X']),
 				lat: Number(routeInfo['Ending_point_-_Y']),
 			};
-			//setLocation(temp);
-			//console.log(temp);
+			setLocation(temp);
+			console.log(temp);
 		}
-	}, [route]);
+	}, [route, routs, routeInfo]);
 
 	// useEffect(() => {
 	// 	if (routeInfo) {
@@ -69,7 +68,7 @@ const Content = ({ routs, handleStarSelected }) => {
 		}
 		return tempInfo;
 	};
-	console.log(location);
+	//console.log(location);
 	return (
 		<Wrapper>
 			<div className="content-container">

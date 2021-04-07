@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-	GoogleMap,
-	LoadScript,
-	Marker,
-	InfoWindow,
-} from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import { API_KEY } from './API_KEY';
 
 const MapContainer = ({ routeName, location }) => {
@@ -18,12 +13,12 @@ const MapContainer = ({ routeName, location }) => {
 	const mapStyles = {
 		height: '200px',
 		width: '100%',
-		zIndex: '-1',
+		zIndex: '1',
 	};
 
 	const defaultCenter = {
-		lat: 31.4117257,
-		lng: 35.0818155,
+		lat: 31.771959,
+		lng: 35.217018,
 	};
 
 	return (
@@ -31,19 +26,15 @@ const MapContainer = ({ routeName, location }) => {
 			<GoogleMap
 				resetBoundsOnResize={true}
 				mapContainerStyle={mapStyles}
-				zoom={8}
-				center={defaultCenter}
-			/>
-			<Marker key={routeName} position={location} />
-			{/* {selected.location && (
-				<InfoWindow
-					position={selected.location}
-					clickable={true}
-					onCloseClick={() => setSelected({})}
-				>
-					<p>{selected.name}</p>
-				</InfoWindow>
-			)} */}
+				zoom={10}
+				center={location}
+				zoomControl={true}
+				draggable={true}
+				scaleControl={true}
+			>
+				{/* <Marker key={'hi'} position={{ lat: 31.6685542, lng: 34.5639033 }} /> */}
+				<Marker key={routeName} position={location} />
+			</GoogleMap>
 		</LoadScript>
 	);
 };

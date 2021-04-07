@@ -12,12 +12,17 @@ import { ThemeProvider } from 'styled-components';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import RegionsSelector from './components/regionsSelector/RegionsSelector';
+import SearchList from './components/searchList/SearchList';
 
 const App = () => {
 	const [routs, setRouts] = useState([]);
 	//const [starsSelected, setSelectStar] = useState(0);
 	//const [routeSelected, setRouteSelected] = useState('');
+	const [searchTerm, setSerchTerm] = useState('');
 
+	const handleChange = (event) => {
+		setSerchTerm(event.target.value);
+	};
 	const handleStarSelected = (routeName, i) => {
 		//setSelectStar(i);
 		//console.log(starsSelected);
@@ -77,7 +82,7 @@ const App = () => {
 			<>
 				<BrowserRouter>
 					<GlobalStyles />
-					<Header />
+					<Header handleChange={handleChange} />
 					<Switch>
 						<Route path="/" exact component={HomePage} />
 						<Route path="/categories/:category/routs" exact>
@@ -89,6 +94,9 @@ const App = () => {
 						</Route>
 						<Route path="/recomended" exact>
 							<Recomended routs={routs} />
+						</Route>
+						<Route path="/SearchList" exact>
+							<SearchList routs={routs} searchTerm={searchTerm} />
 						</Route>
 					</Switch>
 					<Footer />

@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
 
 	.content-container {
 		height: 98%;
-		width: 80%;
+		width: 60%;
 	}
 
 	.content,
