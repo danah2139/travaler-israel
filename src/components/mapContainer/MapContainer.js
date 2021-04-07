@@ -1,8 +1,20 @@
-import React from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import React, { useState } from 'react';
+import {
+	GoogleMap,
+	LoadScript,
+	Marker,
+	InfoWindow,
+} from '@react-google-maps/api';
 import { API_KEY } from './API_KEY';
 
 const MapContainer = ({ routeName, location }) => {
+	console.log(location);
+	const [selected, setSelected] = useState({});
+
+	const onSelect = (item) => {
+		setSelected(item);
+	};
+
 	const mapStyles = {
 		height: '200px',
 		width: '100%',
@@ -23,6 +35,15 @@ const MapContainer = ({ routeName, location }) => {
 				center={defaultCenter}
 			/>
 			<Marker key={routeName} position={location} />
+			{/* {selected.location && (
+				<InfoWindow
+					position={selected.location}
+					clickable={true}
+					onCloseClick={() => setSelected({})}
+				>
+					<p>{selected.name}</p>
+				</InfoWindow>
+			)} */}
 		</LoadScript>
 	);
 };

@@ -8,8 +8,8 @@ const Content = ({ routs, handleStarSelected }) => {
 	const { route, category, region } = useParams();
 	const [routeInfo, setRouteInfo] = useState({ Name: null });
 	const [location, setLocation] = useState({
-		lat: 31.948995001443276,
-		lng: 33.622852171540295,
+		lat: 31.6685542,
+		lng: 34.5639033,
 	});
 	useEffect(() => {
 		if (routs.length) {
@@ -20,12 +20,13 @@ const Content = ({ routs, handleStarSelected }) => {
 						route.toLowerCase()
 				)
 			);
-
-			setLocation({
+			// console.log(routeInfo);
+			const temp = {
 				lng: Number(routeInfo['Ending_point_-_X']),
 				lat: Number(routeInfo['Ending_point_-_Y']),
-			});
-			//console.log(routeName, 'check');
+			};
+			//setLocation(temp);
+			//console.log(temp);
 		}
 	}, [route]);
 
@@ -68,7 +69,7 @@ const Content = ({ routs, handleStarSelected }) => {
 		}
 		return tempInfo;
 	};
-
+	console.log(location);
 	return (
 		<Wrapper>
 			<div className="content-container">
