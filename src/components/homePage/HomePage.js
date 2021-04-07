@@ -2,14 +2,14 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
 	${'' /* width: 100vw; */}
-	height: 70%;
+	height: 73.2%;
 	text-align: center;
 	display: flex;
 	color: ${({ theme }) => theme.primaryLight};
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background: url('./img/home.jpg') no-repeat center center;
+	background: url('../img/home.jpg') no-repeat center center;
 	background-size: auto;
 	margin-bottom: 5px;
 

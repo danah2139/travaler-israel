@@ -7,9 +7,6 @@ header {
 }
 
 .logo {
-	padding: 5px;
-	border: 2px solid;
-	border-radius: 70%;
 	margin: 10px 0;
 	cursor: pointer;
 }
@@ -17,5 +14,4 @@ header {
 .logo img {
 	display: block;
 	height: 12vh;
-	border-radius: 70%;
 }

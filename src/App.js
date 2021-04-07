@@ -43,7 +43,8 @@ const App = () => {
 				let offset = 0;
 				let result = [];
 				let tmpRouts = [];
-				if (!dataFromLocalStorage) {
+				console.log(dataFromLocalStorage, 'hi');
+				if (!dataFromLocalStorage.length) {
 					do {
 						const { data } = await Api.get(
 							`datastore_search?resource_id=8fb94fe2-a87c-46b6-9c0b-c2abe4fbf06f&limit=100&offset=${offset}`

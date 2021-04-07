@@ -20,6 +20,11 @@ const Content = ({ routs, handleStarSelected }) => {
 						route.toLowerCase()
 				)
 			);
+
+			setLocation({
+				lng: Number(routeInfo['Ending_point_-_X']),
+				lat: Number(routeInfo['Ending_point_-_Y']),
+			});
 			//console.log(routeName, 'check');
 		}
 	}, [route]);

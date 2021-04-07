@@ -6,6 +6,7 @@ const MapContainer = ({ routeName, location }) => {
 	const mapStyles = {
 		height: '200px',
 		width: '100%',
+		zIndex: '-1',
 	};
 
 	const defaultCenter = {

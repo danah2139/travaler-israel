@@ -22,7 +22,7 @@ const Header = () => {
 			</FocusLock>
 			{/* <input type="search" /> */}
 			<div className="logo" onClick={() => push('/')}>
-				<img alt="logo" src="./img/Logo-travel-in-israel.png" />
+				<img alt="logo" src="../img/Logo-travel-in-israel.png" />
 			</div>
 		</header>
 	);
