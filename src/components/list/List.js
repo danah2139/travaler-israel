@@ -24,9 +24,7 @@ const List = ({ routs, region, category }) => {
 
 			setFilterRouts(result);
 		}
-	}, [region]);
-
-	// 			.map((route) => ({ routeName: route.Name, id: route.Id })); setFilterRouts(result);
+	}, [region, routs]);
 
 	const renderRoutes = () => {
 		return filterRouts.map((routeItem) => (
