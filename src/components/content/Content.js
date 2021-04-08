@@ -39,6 +39,7 @@ const Content = ({ routs, handleStarSelected }) => {
 		const tempInfo = [];
 		const notDisplayArr = [
 			'Name',
+			'Id',
 			'_id',
 			'VendorId',
 			'Vendor_Name',
@@ -55,11 +56,11 @@ const Content = ({ routs, handleStarSelected }) => {
 				let avaregeRate = routeInfo[key] / routeInfo['Voters_Counter'];
 				tempInfo.push(
 					<div>
-						<span>{`${key}: `}</span>
+						<span className="title">{`${key}: `}</span>
 						<p> {avaregeRate}</p>
 					</div>
 				);
-			} else if (notDisplayArr.includes(key) === -1) {
+			} else if (!notDisplayArr.includes(key)) {
 				if (routeInfo[key] !== '') {
 					tempInfo.push(
 						<div>

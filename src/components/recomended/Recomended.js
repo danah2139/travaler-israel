@@ -33,6 +33,7 @@ const Recomended = ({ routs }) => {
 	};
 
 	const handleInputChange = (event) => {
+		setErrorMessage(false);
 		setFormInfo({ ...formInfo, [event.target.name]: event.target.value });
 	};
 
@@ -58,7 +59,7 @@ const Recomended = ({ routs }) => {
 						(formInfo[key] && route[key] !== 'Yes') ||
 						(!formInfo[key] && route[key] !== 'No')
 					) {
-						console.log(formInfo[key], route[key]);
+						//					console.log(formInfo[key], route[key]);
 						flag = false;
 					}
 				} else if (route[key] !== formInfo[key]) {
@@ -78,8 +79,8 @@ const Recomended = ({ routs }) => {
 			);
 		}
 
-		console.log(result, 'hi');
-		if (result) {
+		//console.log(result, 'hi');
+		if (result.size) {
 			history.push(
 				`/categories/${result.Trail_Type}/routs/${result.Name.replaceAll(
 					' ',
