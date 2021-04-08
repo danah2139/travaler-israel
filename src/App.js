@@ -26,11 +26,8 @@ const App = () => {
 		//push('/searchList');
 	};
 	const handleStarSelected = (routeName, i) => {
-		//setSelectStar(i);
-		//console.log(starsSelected);
 		const result = routs.map((route) => {
 			if (route.Name.replaceAll(' ', '') === routeName) {
-				console.log(i, 'test');
 				return {
 					...route,
 					Voters_Counter: route.Voters_Counter + 1,
