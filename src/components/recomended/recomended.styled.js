@@ -48,4 +48,8 @@ export const Wrapper = styled.div`
 
 		${'' /* width: 50px; */}
 	}
+	input[type='submit']:hover {
+		background: ${({ theme }) => theme.primaryDark};
+		color: white;
+	}
 `;

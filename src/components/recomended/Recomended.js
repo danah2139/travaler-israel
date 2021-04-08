@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 const Recomended = ({ routs }) => {
 	const [formInfo, setFormInfo] = useState({});
+	const [errorMessage, setErrorMessage] = useState(false);
 	let history = useHistory();
 	useEffect(() => {
 		navigator.geolocation.getCurrentPosition(
@@ -40,7 +41,7 @@ const Recomended = ({ routs }) => {
 		console.log(formInfo);
 		let flag = true;
 
-		const result = routs.filter((route) => {
+		const results = routs.filter((route) => {
 			flag = true;
 			for (let key in formInfo) {
 				if (key === 'Trail_Duration') {
@@ -68,14 +69,25 @@ const Recomended = ({ routs }) => {
 				return route;
 			}
 		});
-		console.log(result);
-		if (result.length) {
+		let result = {};
+		if (results.length) {
+			result = results.reduce(
+				(maxItem, route) => (maxItem.Rate < route.Rate ? route : maxItem),
+
+				results[0]
+			);
+		}
+
+		console.log(result, 'hi');
+		if (result) {
 			history.push(
-				`/categories/${result[0].Trail_Type}/routs/${result[0].Name.replaceAll(
+				`/categories/${result.Trail_Type}/routs/${result.Name.replaceAll(
 					' ',
 					''
 				)}`
 			);
+		} else {
+			setErrorMessage(true);
 		}
 
 		event.target.reset();
@@ -166,6 +178,7 @@ const Recomended = ({ routs }) => {
 				</label>
 				<input type="submit" value="search" />
 			</form>
+			{errorMessage && <div>No Results Found</div>}
 		</Wrapper>
 	);
 };

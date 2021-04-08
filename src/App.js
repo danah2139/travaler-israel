@@ -4,26 +4,26 @@ import HomePage from './components/homePage/HomePage';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Content from './components/content/Content';
-import List from './components/list/List';
 import Recomended from './components/recomended/Recomended';
 import { theme } from './theme';
 
 import { ThemeProvider } from 'styled-components';
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom';
+//import { useHistory } from 'react-router';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import RegionsSelector from './components/regionsSelector/RegionsSelector';
 import SearchList from './components/searchList/SearchList';
 
 const App = () => {
 	const [routs, setRouts] = useState([]);
-	let history = useHistory();
+	//let { push } = useHistory();
 	//const [starsSelected, setSelectStar] = useState(0);
 	//const [routeSelected, setRouteSelected] = useState('');
 	const [searchTerm, setSerchTerm] = useState('');
 
 	const handleChange = (event) => {
 		setSerchTerm(event.target.value);
-		history.push('/searchList');
+		//push('/searchList');
 	};
 	const handleStarSelected = (routeName, i) => {
 		//setSelectStar(i);

@@ -12,12 +12,12 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     display: flex;
-
+    overflow:auto;
     background: ${({ theme }) => theme.primaryWhite};
     color: ${({ theme }) => theme.primaryDark};
     height: 100vh;
     text-rendering: optimizeLegibility;
-	font-family: 'Montserrat', sans-serif;
+	  font-family: 'Montserrat', sans-serif;
   }
 
   h1 {

@@ -19,7 +19,7 @@ header {
 .wrapper {
 	position: relative;
 	display: flex;
-	min-width: 200px;
+	min-width: 350px;
 }
 
 .search {

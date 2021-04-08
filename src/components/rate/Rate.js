@@ -42,7 +42,7 @@ const Rate = ({ handleStarSelected, routeSelected }) => {
 			<h3>Rate the Route:</h3>
 			<StarsContainer>{renderStars()}</StarsContainer>{' '}
 			<p>
-				<span>{starsSelected}</span> of 5 stars
+				<span style={{ fontWeight: 700 }}>{starsSelected}</span> of 5 stars
 			</p>
 		</div>
 	);

@@ -27,13 +27,14 @@ const MapContainer = ({ routeName, location }) => {
 				resetBoundsOnResize={true}
 				mapContainerStyle={mapStyles}
 				zoom={10}
-				center={location}
+				center={location[0]}
 				zoomControl={true}
 				draggable={true}
 				scaleControl={true}
 			>
 				{/* <Marker key={'hi'} position={{ lat: 31.6685542, lng: 34.5639033 }} /> */}
-				<Marker key={routeName} position={location} />
+				<Marker key={'start:' + { routeName }} position={location[0]} />
+				<Marker key={routeName} position={location[1]} />
 			</GoogleMap>
 		</LoadScript>
 	);

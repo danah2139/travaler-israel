@@ -7,7 +7,7 @@ import MapContainer from '../mapContainer/MapContainer';
 const Content = ({ routs, handleStarSelected }) => {
 	const { route, category, region } = useParams();
 	const [routeInfo, setRouteInfo] = useState({ Name: null });
-	const [location, setLocation] = useState({});
+	const [location, setLocation] = useState([]);
 	useEffect(() => {
 		if (routs.length) {
 			setRouteInfo(
@@ -18,28 +18,40 @@ const Content = ({ routs, handleStarSelected }) => {
 				)
 			);
 			console.log('banana', routeInfo);
-
-			console.log('banana', routeInfo['Ending_point_-_X']);
-			const temp = {
-				lng: Number(routeInfo['Ending_point_-_X']),
-				lat: Number(routeInfo['Ending_point_-_Y']),
-			};
+			let temp = [];
+			//console.log('banana', routeInfo['Ending_point_-_X']);
+			temp.push(
+				{
+					lng: parseFloat(routeInfo['Starting_point_-_X']),
+					lat: parseFloat(routeInfo['Starting_point_-_Y']),
+				},
+				{
+					lng: parseFloat(routeInfo['Ending_point_-_X']),
+					lat: parseFloat(routeInfo['Ending_point_-_Y']),
+				}
+			);
 			setLocation(temp);
 			console.log(temp);
 		}
 	}, [route, routs, routeInfo]);
 
-	// useEffect(() => {
-	// 	if (routeInfo) {
-	// 		console.log(routeInfo.Name, 'hi');
-	// 	}
-	// }, [route]);
 	const renderRoute = () => {
 		const tempInfo = [];
+		const notDisplayArr = [
+			'Name',
+			'_id',
+			'VendorId',
+			'Vendor_Name',
+			'ShortDescription',
+			'URL',
+			'Product_Url',
+			'Ending_point_-_X',
+			'Ending_point_-_Y',
+			'Starting_point_-_X',
+			'Starting_point_-_Y',
+		];
 		for (let key in routeInfo) {
-			if (key === 'Name') {
-				tempInfo.push(<h2>{routeInfo.Name}</h2>);
-			} else if (key === 'Rate') {
+			if (key === 'Rate') {
 				let avaregeRate = routeInfo[key] / routeInfo['Voters_Counter'];
 				tempInfo.push(
 					<div>
@@ -47,19 +59,11 @@ const Content = ({ routs, handleStarSelected }) => {
 						<p> {avaregeRate}</p>
 					</div>
 				);
-			} else if (
-				key !== '_id' &&
-				key !== 'Id' &&
-				key !== 'VendorId' &&
-				key !== 'Vendor_Name' &&
-				key !== 'ShortDescription' &&
-				key !== 'URL' &&
-				key !== 'Product_Url'
-			) {
+			} else if (notDisplayArr.includes(key) === -1) {
 				if (routeInfo[key] !== '') {
 					tempInfo.push(
 						<div>
-							<span>{`${key.replaceAll('_', ' ')}: `}</span>
+							<span className="title">{`${key.replaceAll('_', ' ')}: `}</span>
 							<p dangerouslySetInnerHTML={{ __html: routeInfo[key] }}></p>
 						</div>
 					);
@@ -72,8 +76,9 @@ const Content = ({ routs, handleStarSelected }) => {
 	return (
 		<Wrapper>
 			<div className="content-container">
-				<div className="content">{routeInfo && renderRoute()}</div>
+				<h2>{routeInfo.Name}</h2>
 				<MapContainer routeName={route} location={location} />
+				<div className="content">{routeInfo && renderRoute()}</div>
 			</div>
 			<div className="rate">
 				<Rate handleStarSelected={handleStarSelected} routeSelected={route} />
